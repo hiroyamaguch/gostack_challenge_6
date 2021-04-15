@@ -2,7 +2,7 @@
 Diretório do projeto original nest [link](https://github.com/rocketseat-education/bootcamp-gostack-desafios/tree/master/desafio-fundamentos-reactjs).
 
 # Sobre o projeto
-Este é o front-end web desenvolvido para o desafio Fundamentos do React.js do curso GoStack da Rocketseat. O back-end dessa aplicação está disponível [aqui](https://github.com/hiroyamaguch/gostack_challenge_5). O front-end mobile dessa aplicação está disponível [aqui](https://github.com/hiroyamaguch/gostack_challenge_7).
+Este é o front-end web desenvolvido para o desafio Fundamentos do React.js do curso GoStack da Rocketseat. O back-end dessa aplicação está disponível [aqui](https://github.com/hiroyamaguch/gostack_challenge_5).
 
 # Tecnologias utilizadas
 - HTML / CSS / JS
