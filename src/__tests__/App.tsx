@@ -1,36 +1,14 @@
-/* eslint-disable @typescript-eslint/camelcase */
-/* eslint-disable import/first */
-
-jest.mock('../utils/formatValue.ts', () => ({
-  __esModule: true,
-  default: jest.fn().mockImplementation((value: number) => {
-    switch (value) {
-      case 6000:
-        return 'R$ 6.000,00';
-      case 50:
-        return 'R$ 50,00';
-      case 5950:
-        return 'R$ 5.950,00';
-      case 1500:
-        return 'R$ 1.500,00';
-      case 4500:
-        return 'R$ 4.500,00';
-      default:
-        return '';
-    }
-  }),
-}));
-
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 import MockAdapter from 'axios-mock-adapter';
 import api from '../services/api';
 import App from '../App';
+import formatValue from '../utils/formatValue';
 
 const apiMock = new MockAdapter(api);
 
 const wait = (amount = 0): Promise<void> => {
-  return new Promise((resolve) => setTimeout(resolve, amount));
+  return new Promise(resolve => setTimeout(resolve, amount));
 };
 
 const actWait = async (amount = 0): Promise<void> => {
@@ -100,11 +78,11 @@ describe('Dashboard', () => {
 
     await actWait();
 
-    expect(getByTestId('balance-income')).toHaveTextContent('R$ 6.000,00');
+    expect(getByTestId('balance-income')).toHaveTextContent('$6,000.00');
 
-    expect(getByTestId('balance-outcome')).toHaveTextContent('R$ 50,00');
+    expect(getByTestId('balance-outcome')).toHaveTextContent('$50.00');
 
-    expect(getByTestId('balance-total')).toHaveTextContent('R$ 5.950,00');
+    expect(getByTestId('balance-total')).toHaveTextContent('$5,950.00');
   });
 
   it('should be able to list the transactions', async () => {
@@ -168,15 +146,15 @@ describe('Dashboard', () => {
     await actWait();
 
     expect(getByText('Loan')).toBeTruthy();
-    expect(getByText('R$ 1.500,00')).toBeTruthy();
+    expect(getByText('$1,500.00')).toBeTruthy();
     expect(getByText('Others')).toBeTruthy();
 
     expect(getByText('Computer')).toBeTruthy();
-    expect(getByText('R$ 4.500,00')).toBeTruthy();
+    expect(getByText('$4,500.00')).toBeTruthy();
     expect(getByText('Sell')).toBeTruthy();
 
     expect(getByText('Website Hosting')).toBeTruthy();
-    expect(getByText('- R$ 50,00')).toBeTruthy();
+    expect(getByText('- $50.00')).toBeTruthy();
     expect(getByText('Hosting')).toBeTruthy();
   });
 
